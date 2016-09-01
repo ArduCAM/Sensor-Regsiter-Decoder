@@ -1,5 +1,5 @@
 # Sensor-Regsiter-Decoder
-Decoder the binary form of sensor register settings into human readable format developed by Mark Mullin.
+Decoder the binary form of sensor register settings into human readable format
 
 This is a tool for decoding the programming for the image sensor modules used by the Arducam.  The current work focuses on the OV2640 sensor, however, other sensors can be added by defining the spreadsheet that defines the registers and enables the tool to reproduce the program for that sensor in a more easily understood form.  One of the clearest developments already with this tool is the fact that a large number of critical registers are totally undocumented.
 
