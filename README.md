@@ -36,34 +36,53 @@ const struct sensor_reg OV2640_JPEG_INIT[] =
 
 …
 
-becomes
+becomes (for C++)
 /********************************************
+START Program,OV2640_JPEG_INIT		Generated,Sun Sep  4 16:08:21 2016		Level:C++
+********************************************/
 
-START Program,OV2640_JPEG_INIT	Generated,Sat Aug 27 15:17:46 2016	Level:H
+const struct sensor_reg OV2640_JPEG_INIT[] =
+{
+	{RB0_RA_DLMT,0x00},                              /*1	[ff := 00]		Register Bank Select	 DSP(00)/DSP */
+	{RB0_RSVD_2c,0xff},                              /*2	[2c := ff]		RB0_RSVD_2c	0xff*/
+	{RB0_RSVD_2e,0xdf},                              /*3	[2e := df]		RB0_RSVD_2e	0xdf*/
+	{RB0_RA_DLMT,0x01},                              /*4	[ff := 01]		Register Bank Select	 SENS(01)/SENS */
+	{RB1_RSVD_3c,0x32},                              /*5	[3c := 32]		RB1_RSVD_3c	0x32*/
+	{RB1_CLKRC,0x04},                                /*6	[11 := 04]		Internal clock	0x04*/
+	{RB1_COM2,0x02},                                 /*7	[09 := 02]		Common control 2	0x02*/
+	{RB1_REG04,0x28},                                /*8	[04 := 28]		Register 04	 Always set/DEF  |  HREF_EN(08)/HREF_EN */
+	{RB1_COM8,0xe5},                                 /*9	[13 := e5]		Common control 8	 Banding filter1/DEF  |  Banding filter2/BNDF_EN  |  AGC Auto/Manual/AGC_EN  |  Auto/Manual Exposure/AEC_EN */
+	{RB1_COM9,0x48},                                 /*10	[14 := 48]		Common control 9 Automatic gain ceiling - maximum AGC value [7:5]	 AGC_GAIN_8x(40)/AGC_GAIN_8x  ??08?? */
+	{RB1_RSVD_2c,0x0c},                              /*11	[2c := 0c]		RB1_RSVD_2c	0x0c*/
+	{RB1_RSVD_33,0x78},                              /*12	[33 := 78]		RB1_RSVD_33	0x78*/
+	{RB1_RSVD_3a,0x33},                              /*13	[3a := 33]		RB1_RSVD_3a	0x33*/
+	{RB1_RSVD_3b,0xfb},                              /*14	[3b := fb]		RB1_RSVD_3b	0xfb*/
+...
+};
 
 
+and becomes (for JSON)
 
-001	Register Bank Select                    	DSP 
+{
+	"pgm" : [
+	["0xff","0x00","001   Register Bank Select =  DSP(00)/DSP "],
+	["0x2c","0xff","002   RB0_RSVD_2c = 0xff"],
+	["0x2e","0xdf","003   RB0_RSVD_2e = 0xdf"],
+	["0xff","0x01","004   Register Bank Select =  SENS(01)/SENS "],
+	["0x3c","0x32","005   RB1_RSVD_3c = 0x32"],
+	["0x11","0x04","006   Internal clock = 0x04"],
+	["0x09","0x02","007   Common control 2 = 0x02"],
+	["0x04","0x28","008   Register 04 =  Always set/DEF  |  HREF_EN(08)/HREF_EN "],
+	["0x13","0xe5","009   Common control 8 =  Banding filter1/DEF  |  Banding filter2/BNDF_EN  |  AGC Auto/Manual/AGC_EN  |  Auto/Manual Exposure/AEC_EN "],
+	["0x14","0x48","010   Common control 9 Automatic gain ceiling - maximum AGC value [7:5] =  AGC_GAIN_8x(40)/AGC_GAIN_8x  ??08?? "],
+	["0x2c","0x0c","011   RB1_RSVD_2c = 0x0c"],
+	["0x33","0x78","012   RB1_RSVD_33 = 0x78"],
+	["0x3a","0x33","013   RB1_RSVD_3a = 0x33"],
+	["0x3b","0xfb","014   RB1_RSVD_3b = 0xfb"],
+	...
+	]
+}
 
-002	RB0_RSVD43                              0xff
-
-003	RB0_RSVD45                              0xdf
-
-004	Register Bank Select                    	SENS 
-
-005	RB1_RSVD27                              0x32
-
-006	Internal clock                          0x04
-
-007	Common control 2                        0x02
-
-008	Register 04                             	Always set  |  HREF_EN 
-
-009	Common control 8                        	Banding filter1  |  Banding filter2  |  AGC Auto/Manual  |  Auto/Manual Exposure 
-
-010	Common control 9 Automatic gain ceiling - maximum AGC value [7:5]	AGC_GAIN_8x  ??08?? 
-
-011	RB1_RSVD18                              0x0c
 
 
 
@@ -91,8 +110,7 @@ If you have discovered details about other registers, or want to decode other se
 
 Files in this release
 
-Register Map.ipynb	     — Jupyter python 3 notebook with the register decoding program
-Register Map.py	     -  Python source code extracted from Jupyter
+Register Map.ipynb	     — Jupyter python 3 notebook with the register decoding program -- if you don't have Anaconda and Jupyter, you're really missing out on a cool tool - go here http://jupyter.readthedocs.io/en/latest/install.html
 Register Map.csv         -   Current disassembly information used by Python notebook
 OV2640*.csv		     -  Raw register programs from Arducam reference implementation, consumed by disassembler
 
